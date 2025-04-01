@@ -1,15 +1,11 @@
-import { createClient } from '@supabase/supabase-js';
-import dotenv from 'dotenv';
+import { createClient } from "@supabase/supabase-js";
+import { config } from "./config";
 
-dotenv.config();
-
-const SUPABASE_URL = process.env.SUPABASE_URL || '';
-const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
-
-if (!SUPABASE_URL || !SUPABASE_KEY) {
-    console.error('❌ Missing Supabase URL or Key in .env');
+// ตรวจสอบว่ามีค่าครบไหม
+if (!config.supabaseUrl || !config.supabaseAnonKey) {
+    console.error("❌ Missing Supabase URL or Key in .env");
     process.exit(1);
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = createClient(config.supabaseUrl, config.supabaseAnonKey);
 export default supabase;
