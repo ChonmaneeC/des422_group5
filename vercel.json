@@ -12,5 +12,5 @@
         "dest": "backend/src/server.ts"
       }
     ],
-    "buildCommand": "npm install --prefix server && npm install --prefix client && npm run build --prefix client && npm run build --prefix server"
+    "buildCommand": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend && npm run build --prefix backend"
   }
