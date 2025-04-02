@@ -3,7 +3,6 @@ import cors from "cors";
 import { config } from "./config";
 import userRoutes from './routes/userRoutes';
 import postRoutes from './routes/postRoutes';
-import { setupSwagger } from "./swagger";
 import path from "path";
 
 const app = express();
@@ -15,12 +14,6 @@ app.use(express.json());
 // Routes
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
-
-// Setup Swagger
-if (config.nodeEnv === "development") {
-    console.log("Setting up Swagger...");
-    setupSwagger(app);
-}
 
 // Serve React frontend for non-API routes (if not in development)
 if (config.nodeEnv !== "development") {
