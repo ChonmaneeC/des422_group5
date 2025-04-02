@@ -1,5 +1,4 @@
 export interface User {
-    username: string;
-    accountCreated: string;
-    // TO BE ADDED
-  }
+  id: number;
+  // name: string;
+}
