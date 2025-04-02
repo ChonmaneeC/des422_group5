@@ -16,9 +16,9 @@ app.use(express.json());
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
 
-app.get('/', (req, res) => {
-    res.send('Hello from Backend!');
-});
+// app.get('/', (req, res) => {
+//     res.send('Hello from Backend!');
+// });
 
 app.get('/users', async (req, res) => {
     try {
@@ -75,11 +75,11 @@ app.get('/api/hello', (req, res) => {
 
 // 🛠️ Serve React frontend (ถ้าไม่ใช่ dev mode)
 if (config.nodeEnv !== "development") {
-    const clientBuildPath = path.join(__dirname, "../../client/build");
-    app.use(express.static(clientBuildPath));
+    const frontendBuildPath = path.join(__dirname, "../../frontend/build");
+    app.use(express.static(frontendBuildPath));
 
     app.get("/*", (req, res) => {
-        res.sendFile(path.join(clientBuildPath, "index.html"));
+        res.sendFile(path.join(frontendBuildPath, "index.html"));
     });
 }
 
