@@ -8,8 +8,8 @@ import path from "path";
 
 const app = express();
 if (config.nodeEnv === "development") {
-    app.use(cors());
 }
+app.use(cors());
 app.use(express.json());
 
 // Routes
