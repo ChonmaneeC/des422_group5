@@ -16,7 +16,7 @@ const router = express.Router();
  *       404:
  *         description: User not found
  *       500:
- *         description: Internal server error 
+ *         description: Internal server error
  */
 router.get('/getUsername', async (_: Request, res: Response) => {
   supabase
@@ -28,7 +28,7 @@ router.get('/getUsername', async (_: Request, res: Response) => {
     if (error) {
       res.status(500).json({ error: error.message });
     } else if (data) {
-      res.json({ message: data.username });
+      res.json({ message: data.id });
     } else {
       res.status(404).json({ message: 'User not found' });
     }
