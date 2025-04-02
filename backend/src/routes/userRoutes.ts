@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import supabase from '../../supabaseClient'; // Import supabase client (ทางที่ดีควรย้ายมาที่ src/supabaseClient.ts)
+import supabase from '../supabaseClient'; // Import supabase client (ทางที่ดีควรย้ายมาที่ src/supabaseClient.ts)
 import { User } from '../types/types';
 import { PostgrestError } from '@supabase/supabase-js';
 

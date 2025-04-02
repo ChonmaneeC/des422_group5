@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import { config } from "./config";
-import userRoutes from './src/routes/userRoutes';
-import postRoutes from './src/routes/postRoutes';
+import userRoutes from './routes/userRoutes';
+import postRoutes from './routes/postRoutes';
 import { setupSwagger } from "./swagger";
 import path from "path";
 
