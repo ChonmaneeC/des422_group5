@@ -74,14 +74,14 @@ app.get('/api/hello', (req, res) => {
 });
 
 // 🛠️ Serve React frontend (ถ้าไม่ใช่ dev mode)
-if (config.nodeEnv !== "development") {
+// if (config.nodeEnv !== "development") {
     const frontendBuildPath = path.join(__dirname, "../../frontend/build");
     app.use(express.static(frontendBuildPath));
 
     app.get("/*", (req, res) => {
         res.sendFile(path.join(frontendBuildPath, "index.html"));
     });
-}
+// }
 
 // Start the server
 app.listen(config.port, async () => {
