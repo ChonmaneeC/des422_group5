@@ -1,27 +1,26 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+import { config } from "./config"; // Import config
 import supabase from './supabaseClient'; // Import supabase client
-import { PostgrestError } from '@supabase/supabase-js';
-
-interface User {
-    id: number;
-    // name: string;
-}
-
-dotenv.config();
+import userRoutes from "./routes/userRoutes"; // Import user routes
+import postRoutes from "./routes/postRoutes"; // Import post routes
+import path from "path";
 
 const app = express();
+if (config.nodeEnv === "development") {
+}
 app.use(cors({
-    origin: "http://localhost:3000", // URL ของ Frontend
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
+    origin: true
 }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello from Backend!');
-});
+// Routes
+app.use('/api/user', userRoutes);
+app.use('/api/post', postRoutes);
+
+// app.get('/', (req, res) => {
+//     res.send('Hello from Backend!');
+// });
 
 app.get('/users', async (req, res) => {
     try {
@@ -55,6 +54,8 @@ app.get('/users', async (req, res) => {
     //     });
 });
 
+// เช็คว่า Supabase เชื่อมต่อได้ไหม
+// Check if Supabase is reachable
 app.get('/supabase/status', async (req, res) => {
     try {
         const { error } = await supabase.from('users').select('id').limit(1);
@@ -74,8 +75,26 @@ app.get('/api/hello', (req, res) => {
     res.json({ message: 'Hello from the API!' });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// 🛠️ Serve React frontend (ถ้าไม่ใช่ dev mode)
+// if (config.nodeEnv !== "development") {
+    const frontendBuildPath = path.join(__dirname, "../../frontend/build");
+    app.use(express.static(frontendBuildPath));
 
+    app.get("/", (req, res) => {
+        res.sendFile(path.join(frontendBuildPath, "index.html"));
+    });
+
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// }
+
+// Start the server
+app.listen(config.port, async () => {
+    console.log(`🚀 Server running on port ${config.port}`);
+    const { error } = await supabase.from('users').select('id').limit(1);
+    if (error) {
+        console.error("❌ Supabase connection failed:", error.message);
+    } else {
+        console.log("✅ Supabase connected successfully!");
+    }
+});
