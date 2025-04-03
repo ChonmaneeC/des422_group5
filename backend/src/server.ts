@@ -9,9 +9,8 @@ import path from "path";
 const app = express();
 if (config.nodeEnv === "development") {
 }
-app.use(cors({
-    origin: true
-}));
+app.use(cors({ origin: "*" }));  // แก้เป็น * สำหรับทุก origin
+
 app.use(express.json());
 
 // Routes
