@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { config } from "./config";
+import { config } from "./config"; // Import config
 import supabase from './supabaseClient'; // Import supabase client
 import userRoutes from "./routes/userRoutes"; // Import user routes
 import postRoutes from "./routes/postRoutes"; // Import post routes
