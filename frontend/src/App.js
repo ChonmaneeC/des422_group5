@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from "react";
-import { fetchUsers } from "./utils/api"; // นำเข้า API ที่แยกไว้
+import { fetchUsers } from "./api"; // นำเข้า API ที่แยกไว้
 
 function App() {
   const [data, setData] = useState('');
