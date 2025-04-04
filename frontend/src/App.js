@@ -9,9 +9,10 @@ function App() {
   useEffect(() => {
     fetchUsers().then((d) => {
       setData(d.message);
-      console.log(data);
+      console.log(d.message); // ✅ ใช้ค่าที่ได้มาทันทีแทนการใช้ data
     });
   }, []);
+  
 
   return (
     <div className="App">
