@@ -18,10 +18,10 @@ const router = express.Router();
  *       500:
  *         description: Internal server error
  */
-router.get('/getUsername', async (_: Request, res: Response) => {
+router.get('/getId', async (_: Request, res: Response) => {
   supabase
     .from('users')
-    .select('username')
+    .select('id')
     .limit(1)
     .single<User>()
   .then(({ data, error }: { data: User | null; error: PostgrestError | null }) => {

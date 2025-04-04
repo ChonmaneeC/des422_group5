@@ -21,7 +21,7 @@ app.use('/api/post', postRoutes);
 //     res.send('Hello from Backend!');
 // });
 
-app.get('/users', async (req, res) => {
+app.get('/api/users', async (req, res) => {
     try {
         const { data, error } = await supabase.from('users').select('id');
         console.log("Data:", data);
