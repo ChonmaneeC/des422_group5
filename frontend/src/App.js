@@ -7,11 +7,16 @@ function App() {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    fetchUsers().then((d) => {
-      setData(d.message);
-      console.log(d.message); // ✅ ใช้ค่าที่ได้มาทันทีแทนการใช้ data
-    });
+    fetchUsers()
+      .then((d) => {
+        setData(d.message);
+        console.log("Fetched message:", d.message);
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+      });
   }, []);
+  
   
 
   return (
