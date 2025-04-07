@@ -76,12 +76,16 @@ app.get('/api/hello', (req, res) => {
 
 // 🛠️ Serve React frontend (ถ้าไม่ใช่ dev mode)
 // if (config.nodeEnv !== "development") {
-    const frontendBuildPath = path.join(__dirname, "../../frontend/build");
-    app.use(express.static(frontendBuildPath));
+    // const frontendBuildPath = path.join(__dirname, "../../frontend/build");
+    // app.use(express.static(frontendBuildPath));
 
+    // app.get("/", (req, res) => {
+    //     res.sendFile(path.join(frontendBuildPath, "index.html"));
+    // });
     app.get("/", (req, res) => {
-        res.sendFile(path.join(frontendBuildPath, "index.html"));
+        res.send("Backend is running ✅");
     });
+    
 
     // const PORT = process.env.PORT || 5000;
     // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
