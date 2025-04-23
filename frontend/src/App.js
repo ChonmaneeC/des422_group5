@@ -7,11 +7,17 @@ function App() {
   const [data, setData] = useState('');
 
   useEffect(() => {
-    fetchUsers().then((d) => {
-      setData(d.message);
-      console.log(data);
-    });
+    fetchUsers()
+      .then((d) => {
+        setData(d.message);
+        console.log("Fetched message:", d.message);
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+      });
   }, []);
+  
+  
 
   return (
     <div className="App">
