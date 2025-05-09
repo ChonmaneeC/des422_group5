@@ -1,3 +1,8 @@
+// User
+export type User = {
+  id: number;
+}
+
 // Profile
 export type UserProfile = {
   id: string;
