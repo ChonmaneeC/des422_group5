@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // User
 export type User = {
   id: number;
@@ -55,3 +56,9 @@ export type Notification = {
   is_read: boolean;
   created_at: string;
 };
+=======
+export interface User {
+    id: number;
+    // name: string;
+  }
+>>>>>>> parent of fc25579 (Update types.ts)
