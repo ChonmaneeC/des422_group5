@@ -19,7 +19,7 @@ function Home() {
       </header>
 
       <section className="home-image-section">
-        <img src="/path-to-your-image.jpg" alt="team working" className="home-image" />
+        <img src="Screenshot 2025-03-30 232348.png" alt="team working" className="home-image" />
       </section>
     </div>
   );
