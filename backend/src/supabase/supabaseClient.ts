@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { config } from "./config";
+import { config } from "../config";
 
 // ตรวจสอบว่ามีค่าครบไหม
 if (!config.supabaseUrl || !config.supabaseAnonKey) {
