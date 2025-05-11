@@ -1,12 +1,13 @@
-
-.App {
-  text-align: center; 
+/* Home */
+.home-container {
+  background-color: #4c6a4d;
+  color: white;
+  text-align: center;
   height: 100vh;
 }
 
 .home-header {
   padding-top: 50px;
-
 }
 
 .home-header h1 {
@@ -14,32 +15,41 @@
   margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home-header p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home-image-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.home-image {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.login-btn {
+  background-color: #ff4f84;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.signup-btn {
+  background-color: #f1c1d3;
+  color: white;
 }
