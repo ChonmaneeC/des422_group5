@@ -1,11 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
-import { config } from "../config";
+import { env } from "../config";
 
-// ตรวจสอบว่ามีค่าครบไหม
-if (!config.supabaseUrl || !config.supabaseAnonKey) {
-    console.error("❌ Missing Supabase URL or Key in .env");
-    process.exit(1);
-}
-
-const supabase = createClient(config.supabaseUrl, config.supabaseAnonKey);
-export default supabase;
+// Remove unnecessary validation (already handled by Zod)
+export const supabase = createClient(
+  env.SUPABASE_URL,
+  env.SUPABASE_ANON_KEY
+);
