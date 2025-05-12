@@ -1,19 +1,23 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import { config } from "./config"; // Import config
-import supabase from './supabase/supabaseClient'; // Import supabase client
+import { env } from "./config"; // Import config
+import { supabase } from './supabase/supabaseClient'; // Import supabase client
 import userRoutes from "./routes/userRoutes"; // Import user routes
 import postRoutes from "./routes/postRoutes"; // Import post routes
 import path from "path";
+import dotenv from 'dotenv';
+import 'dotenv/config';
+
+dotenv.config();
 
 const app = express();
-if (config.nodeEnv === "development") {
+if (env.NODE_ENV === "development") {
 }
 app.use(cors({ origin: "*" }));  // แก้เป็น * สำหรับทุก origin
 
 app.use(express.json());
 
-// Routes
+// RoutesAV
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
 
@@ -88,8 +92,8 @@ app.get('/api/hello', (req, res) => {
 // }
 
 // Start the server
-app.listen(config.port, async () => {
-    console.log(`🚀 Server running on port ${config.port}`);
+app.listen(env.PORT, async () => {
+    console.log(`🚀 Server running on port ${env.PORT}`);
     const { error } = await supabase.from('users').select('id').limit(1);
     if (error) {
         console.error("❌ Supabase connection failed:", error.message);
